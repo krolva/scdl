@@ -82,7 +82,7 @@ scdl me -f
 --sync [file]                   Compares an archive file to a playlist and downloads/removes any changed tracks
 --flac                          Convert original files to .flac. Only works if the original file is lossless quality
 --no-album-tag                  On some player track get the same cover art if from the same album, this prevent it
---original-art                  Download original cover art, not just 500x500 JPEG
+--original-art                  Download original cover art, not just 1080x1080 JPEG
 --original-name                 Do not change name of original file downloads
 --original-metadata             Do not change metadata of original file downloads
 --no-original                   Do not download original file; only mp3, m4a, or opus

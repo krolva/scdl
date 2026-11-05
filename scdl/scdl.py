@@ -53,7 +53,7 @@ Options:
                                     file is lossless quality
     --no-album-tag                  On some player track get the same cover art if from the same
                                     album, this prevent it
-    --original-art                  Download original cover art, not just 500x500 JPEG
+    --original-art                  Download original cover art, not just 1080x1080 JPEG
     --original-name                 Do not change name of original file downloads
     --original-metadata             Do not change metadata of original file downloads
     --no-original                   Do not download original file; only mp3, m4a, or opus
@@ -469,7 +469,7 @@ def _build_ytdl_params(url: str, scdl_args: SCDLArgs) -> tuple[str, dict, list]:
         postprocessors.append((OriginalFilenamePP(), "pre_process"))
 
     if not scdl_args.get("original_art"):
-        params["--thumbnail-id"] = "t500x500"
+        params["--thumbnail-id"] = "t1080x1080"
 
     if scdl_args.get("name_format") == "-":
         # https://github.com/yt-dlp/yt-dlp/issues/8815

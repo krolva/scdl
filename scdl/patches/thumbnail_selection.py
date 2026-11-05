@@ -1,7 +1,17 @@
 # https://github.com/yt-dlp/yt-dlp/pull/11809
 import yt_dlp
 import yt_dlp.options as options
+from yt_dlp.extractor.soundcloud import SoundcloudBaseIE
 from yt_dlp.YoutubeDL import YoutubeDL
+
+# SoundCloud serves a 1080x1080 rendition ("-t1080x1080.jpg") that yt-dlp doesn't list.
+# Register it so it can be selected with --thumbnail-id t1080x1080.
+if "t1080x1080" not in SoundcloudBaseIE._ARTWORK_MAP:
+    SoundcloudBaseIE._ARTWORK_MAP = {
+        **{k: v for k, v in SoundcloudBaseIE._ARTWORK_MAP.items() if k != "original"},
+        "t1080x1080": 1080,
+        **({"original": 0} if "original" in SoundcloudBaseIE._ARTWORK_MAP else {}),
+    }
 
 
 def _sort_thumbnails_patched(self, thumbnails):
